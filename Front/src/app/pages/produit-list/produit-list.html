@@ -1,0 +1,61 @@
+<div class="container">
+
+  <h1 class="title">Liste des produits</h1>
+
+  <!-- Message de suppression -->
+  <div *ngIf="messageSuppression" class="message-suppression">
+    {{ messageSuppression }}
+  </div>
+
+  <!-- Barre d'actions -->
+  <div class="actions-bar">
+    <button class="btn-ajout" (click)="ajouterProduit()">Ajouter Produit</button>
+    
+    <!-- Recherche par ID -->
+    <input 
+      type="number" 
+      placeholder="Rechercher par ID..." 
+      [formControl]="searchControl"
+      (keyup.enter)="rechercherParId()"
+      class="search-input"
+    >
+  </div>
+
+  <div class="liste-wrapper">
+
+    <!-- état de chargement -->
+    <div *ngIf="loading" class="enChargement">
+      <span class="loader"></span> Chargement des produits...
+    </div>
+
+    <!-- Table div-style -->
+    <div class="table-header">
+      <div class="column-header id">ID</div>
+      <div class="column-header name">Nom</div>
+      <div class="column-header price">Prix (€)</div>
+      <div class="column-header stock">Quantité</div>
+      <div class="column-header actions">Actions</div>
+    </div>
+
+    <ng-container *ngIf="!loading && produitsFiltres.length; else vide">
+      <div *ngFor="let produit of produitsFiltres; trackBy: trackById" class="table-row">
+        <div class="column id">{{ produit.id }}</div>
+        <div class="column name">{{ produit.nom }}</div>
+        <div class="column price">{{ produit.prix }}</div>
+        <div class="column stock">{{ produit.quantite }}</div>
+        <div class="column actions">
+          <button class="btn-modifier" (click)="modifierProduit(produit.id!)">Modifier</button>
+          <button class="btn-supprimer" (click)="deleteProduit(produit.id!)">Supprimer</button>
+          <!--<button class="btn-detail" (click)="voirDetail(produit.id!)">Détails</button> -->
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #vide>
+      <div class="vide">Aucun produit disponible.</div>
+    </ng-template>
+
+  </div>
+
+  <footer class="footer">&copy; 2026 - Gestion des produits</footer>
+</div>

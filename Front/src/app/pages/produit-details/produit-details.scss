@@ -1,0 +1,74 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+.produit-detail-card {
+  background: linear-gradient(145deg, #ffffff, #f3f4f6);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  max-width: 500px;
+  margin: 2rem auto;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+
+  .detail-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.9rem;
+
+    .label {
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    .value {
+      font-weight: 500;
+      color: #111827;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+
+    .btn-retour {
+      background-color: #6366f1;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #4f46e5;
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+    }
+  }
+}
+
+.error-message {
+  text-align: center;
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}

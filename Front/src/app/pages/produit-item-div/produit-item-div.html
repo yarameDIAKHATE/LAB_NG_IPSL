@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="produit-card">
+    <!-- En-tête -->
+    <div class="produit-header">
+      <div class="produit-id">ID: {{ produit?.id }}</div>
+      <div class="produit-name">{{ produit?.nom }}</div>
+    </div>
+
+    <!-- Détails -->
+    <div class="produit-body">
+      <div class="produit-row">
+        <span class="label">Prix :</span>
+        <span class="value">{{ produit?.prix }} €</span>
+      </div>
+      <div class="produit-row">
+        <span class="label">Quantité :</span>
+        <span class="badge">{{ produit?.quantite }} en stock</span>
+      </div>
+      <div class="produit-row" *ngIf="produit?.description">
+        <span class="label">Description :</span>
+        <span class="value">{{ produit?.description }}</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="produit-actions">
+      <button class="btn-edit" [routerLink]="['/produits/modifier', produit?.id]">Modifier</button>
+      <button class="btn-delete" (click)="onSupprimer()">Supprimer</button>
+    </div>
+  </div>
+</div>

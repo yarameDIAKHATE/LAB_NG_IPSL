@@ -1,0 +1,50 @@
+<div class="page-container">
+  <div class="content">
+    <div class="page-titre">Modifier Produit</div>
+
+    <form [formGroup]="produitForm" (ngSubmit)="modifierProduit()">
+
+      <div class="form-element">
+        <label>Nom</label>
+        <input type="text" formControlName="nom">
+        <div *ngIf="produitForm.get('nom')?.hasError('required')" class="error">
+          Le champ "Nom" est requis.
+        </div>
+      </div>
+
+      <div class="form-element">
+        <label>Prix</label>
+        <input type="number" formControlName="prix">
+        <div *ngIf="produitForm.get('prix')?.hasError('required')" class="error">
+          Le champ "Prix" est requis.
+        </div>
+        <div *ngIf="produitForm.get('prix')?.hasError('min')" class="error">
+          Le prix doit être supérieur à 0.
+        </div>
+      </div>
+
+      <div class="form-element">
+        <label>Quantité</label>
+        <input type="number" formControlName="quantite">
+        <div *ngIf="produitForm.get('quantite')?.hasError('min')" class="error">
+          La quantité ne peut pas être négative.
+        </div>
+      </div>
+
+      <div class="form-element">
+        <label>Description</label>
+        <input type="text" formControlName="description">
+      </div>
+
+      <button type="submit" class="bouton-valider">Modifier</button>
+    </form>
+
+    <!-- Message -->
+    <div *ngIf="message" class="message-succes">
+      {{ message }}
+    </div>
+
+  </div>
+
+  <footer class="footer">Le footer de la page &copy; 2026</footer>
+</div>

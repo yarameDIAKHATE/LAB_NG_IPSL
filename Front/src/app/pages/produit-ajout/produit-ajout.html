@@ -1,0 +1,57 @@
+<div class="page-container">
+  <div class="content">
+    <div class="page-titre">Ajout Nouveau Produit</div>
+
+    <form [formGroup]="produitForm" (ngSubmit)="ajoutProduit()">
+
+      <!-- Nom du produit -->
+      <div class="form-element">
+        <label class="form-label">Nom</label>
+        <input type="text" formControlName="nom" placeholder="Nom du produit">
+        <div *ngIf="produitForm.get('nom')?.hasError('required')" class="error">
+          Le champ "Nom" est requis.
+        </div>
+        <div *ngIf="produitForm.get('nom')?.hasError('nomUnique')" class="error">
+          Ce produit existe déjà.
+        </div>
+      </div>
+
+      <!-- Prix du produit -->
+      <div class="form-element">
+        <label class="form-label">Prix</label>
+        <input type="number" formControlName="prix" placeholder="Prix en €">
+        <div *ngIf="produitForm.get('prix')?.hasError('required')" class="error">
+          Le champ "Prix" est requis.
+        </div>
+        <div *ngIf="produitForm.get('prix')?.hasError('min')" class="error">
+          Le prix doit être supérieur à 0.
+        </div>
+      </div>
+
+      <!-- Quantité en stock -->
+      <div class="form-element">
+        <label class="form-label">Quantité</label>
+        <input type="number" formControlName="quantite" placeholder="Quantité en stock">
+        <div *ngIf="produitForm.get('quantite')?.hasError('min')" class="error">
+          La quantité doit être supérieure ou égale à 0.
+        </div>
+      </div>
+
+      <!-- Description facultative -->
+      <div class="form-element">
+        <label class="form-label">Description</label>
+        <input type="text" formControlName="description" placeholder="Description (facultative)">
+      </div>
+
+      <!-- Bouton de validation -->
+      <button type="submit" class="bouton-valider">Valider</button>
+    </form>
+
+    <!-- Message de succès global -->
+    <div *ngIf="messageSucces" class="message-succes">
+      {{ messageSucces }}
+    </div>
+  </div>
+
+  <footer class="footer">Le footer de la page &copy; 2026</footer>
+</div>

@@ -1,0 +1,38 @@
+<div *ngIf="produit; else errorTpl" class="produit-detail-card">
+  <h2 class="detail-title">Détails du Produit</h2>
+
+  <div class="detail-row">
+    <span class="label">ID :</span>
+    <span class="value">{{ produit.id }}</span>
+  </div>
+
+  <div class="detail-row">
+    <span class="label">Nom :</span>
+    <span class="value">{{ produit.nom }}</span>
+  </div>
+
+  <div class="detail-row">
+    <span class="label">Prix :</span>
+    <span class="value">{{ produit.prix }} €</span>
+  </div>
+
+  <div class="detail-row">
+    <span class="label">Quantité :</span>
+    <span class="value">{{ produit.quantite }}</span>
+  </div>
+
+  <div class="detail-row" *ngIf="produit.description">
+    <span class="label">Description :</span>
+    <span class="value">{{ produit.description }}</span>
+  </div>
+
+  <div class="actions">
+    <button class="btn-retour" (click)="retour()">Retour</button>
+  </div>
+</div>
+
+<ng-template #errorTpl>
+  <div class="error-message">
+    <p>{{ errorMessage || 'Produit introuvable 😢' }}</p>
+  </div>
+</ng-template>
